@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block body %}
+<h1 class="row justify-content m-3"> Enrollment App </h1>
+<div class="container">
+    <div from="col">
+        <button class="btn btn-success btn-lg float-right row" id="myBtn">Add New Students</button>
+    </div>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content container">
+            <span class="close">&times;</span>
+            <h1 align='center'> Students From </h1>
+            <form class="w-100" onsubmit="return validation()" method="post">
+                {% csrf_token %} {{ form|crispy }}<br>
+                <input type='submit' value="Submit">
+            </form>
+        </div>
+    </div>
+    <div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col"> SNo </th>
+                    <th scope="col"> Student Name </th>
+                    <th scope="col"> Email </th>
+                    <th scope="col"> phone </th>
+                    <th scope="col"> class </th>
+                    <th scope="col"> marks </th>
+                    <th scope="col"> edit </th>
+                </tr>
+            </thead>
+            {% for stu in student %}
+            <tbody>
+                <th scope="row"> {{stu.id}} </th>
+                <td> {{stu.student_name}}</td>
+                <td> {{stu.email}}</td>
+                <td> {{stu.phone_no}}</td>
+                <td> {{stu.class_opted}}</td>
+                <td> {{stu.marks}}</td>
+                <td> <a href="{% url 'StudentUpdate' stu.id %}"> Edit </a> </td>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+    <div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    {% if student.has_previous %}
+                    <a class="page-link" href="?page={{student.previous_page_number}}"> Previous </a> {% endif %}
+                </li>
+                <li class="page-item"><a class="page-link"> {{ student.number }} </a></li>
+                {% if student.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{student.next_page_number}}">Next</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    <div>
+
+        </html>
+        {% endblock body %}
