@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+
+    <style>
+        body {
+            background-color: rgb(19, 20,25);
+            color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #clockContainer {
+            color: #17D4FE;
+            font-size: 60px;
+            letter-spacing: 7px;
+        }
+
+        .mainContainer{
+            text-align: center;
+            color: cyan;
+            width: 500px;
+        }
+
+        .btn{
+            cursor: pointer;
+            background-color: aliceblue;
+            font-size: 15px;
+            height: 50px;
+            width: 70px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="mainContainer">
+        <div id="clockContainer"></div>
+        <div id="dateContainer"></div>
+        <div>
+           <button onclick="startClock()">Start</button>
+           <button onclick="stopClock()">Stop</button>
+        </div>
+    </div>
+
+    <script>
+        (function ShowTime(){
+            var CurrentTime = new Date().toLocaleTimeString();
+            document.getElementById("clockContainer").innerText = CurrentTime;
+        })();
+
+        (function ShowDate(){
+            var CurrentDate = new Date().toLocaleDateString();
+            document.getElementById("dateContainer").innerText = CurrentDate;
+        })();
+
+        function stopClock(){
+            clearInterval(TimeInt);
+        };  
+        
+        var TimeInt;
+        function startClock(){
+            TimeInt =  setInterval(ShowTime, 1000);
+        };
+                  
+    </script>
+
+</body>
+</html>
