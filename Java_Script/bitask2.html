@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>iframe document</title>
+    
+    <!-- Using CSS -->
+    <style>      
+        iframe{
+            width: 20em;
+            height: 300px;
+        }
+    </style>
+
+</head>
+
+<body>  
+    <!-- Create iframe webpage inside the webpage  -->
+    <h3>Iframe Tag</h3>
+    <iframe src="BItask.html" style="height:300px;width:500px;"></iframe>
+    <p><a href="https://www.boardinfinity.com/learner/dashboard">BoardInfinity Dashboard</a></p>
+    <hr>
+    <hr>
+
+    <!-- Sum two number   -->
+    <h3>Sum the User Inpur Number:</h3>
+    First Number : <input type="number" id="text1">   
+    Second Number : <input type="number" id="text2">
+    <br>
+    <br>
+    Total = <input type="number" id="total">
+    <input type="button" value="Display Total" onclick="addNumber()">
+    
+    <!-- Using java script  -->
+    <script>
+        function addNumber(){
+            var f_num = parseInt(document.getElementById("text1").value);
+            var s_num = parseInt(document.getElementById("text2").value);
+
+            var sum = f_num + s_num;
+
+            document.getElementById("total").value = sum;  
+        }
+    </script>
+
+<!-- Form Action and Table  -->
+<h3>html form & table</table></h3>
+<form action="static/c.html" method="get">
+    <input type="submit" value="Brows">
+</form>
+
+</body>
+</html>
